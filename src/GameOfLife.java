@@ -23,7 +23,7 @@ public class GameOfLife {
 
     private String[] GetInputFromUser() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter matrix as per your requirement:\n'X'\t: ForLive Cell\n'-'\t: For dead Cell\n'Q'\t: Enter Q on new line for ending input\n");
+        System.out.println("Enter matrix as per your requirement:\n'X'\t: For Live Cell\n'-'\t: For dead Cell\n'Q'\t: Enter Q on new line for ending input\n");
         String[] inputLines = new String[10];
         int i = 0;
         String singleLineFromInput = scanner.nextLine();

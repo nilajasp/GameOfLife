@@ -17,6 +17,7 @@ public class Cell {
     public Cell(int k, int i){
         _position = new PositionOfCellInGrid(k,i);
         _neighbourCells = new ArrayList<Cell>();
+        _state = new DeadStateOfCell();
     }
 
     public void ChangeStateAfterTick()
