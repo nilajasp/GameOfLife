@@ -12,23 +12,42 @@ public class Universe {
         Cells = new ArrayList<Cell>();
     }
 
-    public void Create(String[] input) {
-        PopulateGridWithUserData(input);
+    public void Create(String[] input,int numberOfRows, int numberOfColumns) {
+        PopulateGridWithUserData(input,numberOfRows, numberOfColumns);
     }
 
-    private void PopulateGridWithUserData(String[] input) {
-        for (int k = 0; k < input.length; k++) {
+    private void PopulateGridWithUserData(String[] input,int numberOfRows, int numberOfColumns) {
+
+        //Initialise first row as empty row
+        for(int colNumber = 0 ; colNumber <= numberOfColumns +1; colNumber++)
+        {
+            Cell firstRowCell = new Cell(0, colNumber);
+            Cells.add(firstRowCell);
+        }
+
+        for (int k = 0; k < numberOfRows; k++) {
             if (input[k] != null) {
-                int line = input[k].length();
-                for (int i = 0; i < line; i++) {
-                    Cell cell = new Cell(k, i);
+                int lineLength = input[k].length();
+                Cell firstCellInRow = new Cell(k+1,0);
+                Cells.add(firstCellInRow);
+                for (int i = 0; i < numberOfColumns; i++) {
+                    Cell cell = new Cell(k+1, i+1);
                     if (input[k].charAt(i) == 'X')
                         cell.SetState(new AliveStateOfCell());
                     else
                         cell.SetState(new DeadStateOfCell());
                     Cells.add(cell);
                 }
+                Cell lastCellInRow=new Cell(k+1,lineLength+1);
+                Cells.add(lastCellInRow);
             }
+        }
+
+        //Initialize last row as empty row
+        for(int colNumber = 0 ; colNumber <= numberOfColumns+1; colNumber++)
+        {
+            Cell firstRowCell = new Cell(numberOfRows, colNumber);
+            Cells.add(firstRowCell);
         }
     }
 
@@ -78,9 +97,16 @@ public class Universe {
         return neighbourCell;
     }
 
-    public void Play() {
+    public List<Cell> Play() {
+        List<Cell> newCells = new ArrayList<Cell>();
         for (Cell cell : Cells) {
-            cell.ChangeStateAfterTick();
+            Cell currentCell = new Cell(cell.GetRowNumber(), cell.GetColNumber());
+            if(cell.GetCellState() == "X")
+                currentCell.SetState(new AliveStateOfCell());
+            currentCell._neighbourCells = cell._neighbourCells;
+            currentCell.ChangeStateAfterTick();
+            newCells.add(currentCell);
         }
+        return newCells;
     }
 }
