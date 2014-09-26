@@ -19,7 +19,7 @@ public class Universe {
     private void PopulateGridWithUserData(String[] input,int numberOfRows, int numberOfColumns) {
 
         //Initialise first row as empty row
-        for(int colNumber = 0 ; colNumber <= numberOfColumns +1; colNumber++)
+        for(int colNumber = 0 ; colNumber <= numberOfColumns+1; colNumber++)
         {
             Cell firstRowCell = new Cell(0, colNumber);
             Cells.add(firstRowCell);
@@ -27,7 +27,6 @@ public class Universe {
 
         for (int k = 0; k < numberOfRows; k++) {
             if (input[k] != null) {
-                int lineLength = input[k].length();
                 Cell firstCellInRow = new Cell(k+1,0);
                 Cells.add(firstCellInRow);
                 for (int i = 0; i < numberOfColumns; i++) {
@@ -38,7 +37,7 @@ public class Universe {
                         cell.SetState(new DeadStateOfCell());
                     Cells.add(cell);
                 }
-                Cell lastCellInRow=new Cell(k+1,lineLength+1);
+                Cell lastCellInRow=new Cell(k+1,numberOfColumns+1);
                 Cells.add(lastCellInRow);
             }
         }
@@ -46,7 +45,7 @@ public class Universe {
         //Initialize last row as empty row
         for(int colNumber = 0 ; colNumber <= numberOfColumns+1; colNumber++)
         {
-            Cell firstRowCell = new Cell(numberOfRows, colNumber);
+            Cell firstRowCell = new Cell(numberOfRows+1, colNumber);
             Cells.add(firstRowCell);
         }
     }
