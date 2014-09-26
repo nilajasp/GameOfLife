@@ -1,11 +1,11 @@
 /**
  * Created by nilajapatankar on 6/25/14.
  */
-public class PositionOfCellInGrid {
+public class PositionOfCellInUniverse {
     private int _row;
     private int _col;
 
-    public PositionOfCellInGrid(int k, int i) {
+    public PositionOfCellInUniverse(int k, int i) {
         _row = k;
         _col = i;
     }

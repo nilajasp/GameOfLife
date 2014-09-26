@@ -10,12 +10,12 @@ public class Cell {
 
     IStateOfCell _state;
 
-    PositionOfCellInGrid _position;
+    PositionOfCellInUniverse _position;
 
     private int _numberOfLiveNeighbours;
 
     public Cell(int k, int i){
-        _position = new PositionOfCellInGrid(k,i);
+        _position = new PositionOfCellInUniverse(k,i);
         _neighbourCells = new ArrayList<Cell>();
         _state = new DeadStateOfCell();
     }

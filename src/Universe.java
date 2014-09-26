@@ -13,10 +13,10 @@ public class Universe {
     }
 
     public void Create(String[] input,int numberOfRows, int numberOfColumns) {
-        PopulateGridWithUserData(input,numberOfRows, numberOfColumns);
+        PopulateUniverseWithUserData(input, numberOfRows, numberOfColumns);
     }
 
-    private void PopulateGridWithUserData(String[] input,int numberOfRows, int numberOfColumns) {
+    private void PopulateUniverseWithUserData(String[] input, int numberOfRows, int numberOfColumns) {
 
         //Initialise first row as empty row
         for(int colNumber = 0 ; colNumber <= numberOfColumns+1; colNumber++)
