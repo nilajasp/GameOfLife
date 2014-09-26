@@ -2,19 +2,19 @@
  * Created by nilajapatankar on 6/25/14.
  */
 public class PositionOfCellInUniverse {
-    private int _row;
-    private int _col;
+    private int row;
+    private int col;
 
     public PositionOfCellInUniverse(int k, int i) {
-        _row = k;
-        _col = i;
+        row = k;
+        col = i;
     }
 
     public int GetRowNumber() {
-        return _row;
+        return row;
     }
 
     public int GetColNumber() {
-        return _col;
+        return col;
     }
 }

@@ -138,7 +138,7 @@ public class CellTest {
         cell.AddToNeighbouringCells(neighbourCell);
 
         //Then
-        Assert.assertEquals(1, cell._neighbourCells.size());
+        Assert.assertEquals(1, cell.neighbourCells.size());
     }
 
     @Test

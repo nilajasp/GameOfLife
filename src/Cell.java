@@ -6,51 +6,51 @@ import java.util.List;
  */
 public class Cell {
 
-    List<Cell> _neighbourCells;
+    List<Cell> neighbourCells;
 
-    IStateOfCell _state;
+    IStateOfCell state;
 
-    PositionOfCellInUniverse _position;
+    PositionOfCellInUniverse position;
 
-    private int _numberOfLiveNeighbours;
+    private int numberOfLiveNeighbours;
 
     public Cell(int k, int i){
-        _position = new PositionOfCellInUniverse(k,i);
-        _neighbourCells = new ArrayList<Cell>();
-        _state = new DeadStateOfCell();
+        position = new PositionOfCellInUniverse(k,i);
+        neighbourCells = new ArrayList<Cell>();
+        state = new DeadStateOfCell();
     }
 
     public void ChangeStateAfterTick()
     {
         CalculateNumberOfLiveNeighbours();
-        _state = _state.ChangeState(_numberOfLiveNeighbours);
+        state = state.ChangeState(numberOfLiveNeighbours);
     }
 
     private void CalculateNumberOfLiveNeighbours() {
-        for (Cell neighbourCell : _neighbourCells) {
+        for (Cell neighbourCell : neighbourCells) {
             if(neighbourCell.GetCellState().compareToIgnoreCase("X") == 0)
-                _numberOfLiveNeighbours++;
+                numberOfLiveNeighbours++;
         }
     }
 
     public void AddToNeighbouringCells(Cell neighbourCell)
     {
-        _neighbourCells.add(neighbourCell);
+        neighbourCells.add(neighbourCell);
     }
 
     public int GetRowNumber() {
-        return _position.GetRowNumber();
+        return position.GetRowNumber();
     }
 
     public int GetColNumber() {
-        return _position.GetColNumber();
+        return position.GetColNumber();
     }
 
     public void SetState(IStateOfCell stateOfCell) {
-        _state = stateOfCell;
+        state = stateOfCell;
     }
 
     public String GetCellState() {
-        return _state.toString();
+        return state.toString();
     }
 }

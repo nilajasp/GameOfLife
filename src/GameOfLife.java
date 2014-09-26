@@ -6,16 +6,16 @@ import java.util.Scanner;
  */
 public class GameOfLife {
 
-    Universe Universe = new Universe();
+    Universe universe = new Universe();
     int numberOfRows;
     int numberOfColumns;
 
     public void Start() {
         String[] inputLines = GetInputFromUser();
         CalculateNumebrOfRowsAndColumns(inputLines);
-        Universe.Create(inputLines,numberOfRows, numberOfColumns);
-        Universe.InstantiateNeighbourCells();
-        List<Cell> result = Universe.Play();
+        universe.Create(inputLines, numberOfRows, numberOfColumns);
+        universe.InstantiateNeighbourCells();
+        List<Cell> result = universe.Play();
         DisplayOutputOfGame(result);
     }
 

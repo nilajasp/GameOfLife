@@ -6,10 +6,10 @@ import java.util.List;
  */
 public class Universe {
 
-    public List<Cell> Cells;
+    public List<Cell> cells;
 
     public Universe() {
-        Cells = new ArrayList<Cell>();
+        cells = new ArrayList<Cell>();
     }
 
     public void Create(String[] input,int numberOfRows, int numberOfColumns) {
@@ -22,23 +22,23 @@ public class Universe {
         for(int colNumber = 0 ; colNumber <= numberOfColumns+1; colNumber++)
         {
             Cell firstRowCell = new Cell(0, colNumber);
-            Cells.add(firstRowCell);
+            cells.add(firstRowCell);
         }
 
         for (int k = 0; k < numberOfRows; k++) {
             if (input[k] != null) {
                 Cell firstCellInRow = new Cell(k+1,0);
-                Cells.add(firstCellInRow);
+                cells.add(firstCellInRow);
                 for (int i = 0; i < numberOfColumns; i++) {
                     Cell cell = new Cell(k+1, i+1);
                     if (input[k].charAt(i) == 'X')
                         cell.SetState(new AliveStateOfCell());
                     else
                         cell.SetState(new DeadStateOfCell());
-                    Cells.add(cell);
+                    cells.add(cell);
                 }
                 Cell lastCellInRow=new Cell(k+1,numberOfColumns+1);
-                Cells.add(lastCellInRow);
+                cells.add(lastCellInRow);
             }
         }
 
@@ -46,12 +46,12 @@ public class Universe {
         for(int colNumber = 0 ; colNumber <= numberOfColumns+1; colNumber++)
         {
             Cell firstRowCell = new Cell(numberOfRows+1, colNumber);
-            Cells.add(firstRowCell);
+            cells.add(firstRowCell);
         }
     }
 
     public void InstantiateNeighbourCells() {
-        for (Cell cell : Cells) {
+        for (Cell cell : cells) {
             int rowNumber = cell.GetRowNumber();
             int colNumber = cell.GetColNumber();
             Cell neighbourCell;
@@ -85,7 +85,7 @@ public class Universe {
 
     private Cell SelectNeighbourCellFromAllCells(int rowNumber, int colNumber) {
         Cell neighbourCell = null;
-        for (Cell cell : Cells) {
+        for (Cell cell : cells) {
             if (cell.GetRowNumber() == rowNumber && cell.GetColNumber() == colNumber) {
                 neighbourCell = cell;
                 break;
@@ -98,11 +98,11 @@ public class Universe {
 
     public List<Cell> Play() {
         List<Cell> newCells = new ArrayList<Cell>();
-        for (Cell cell : Cells) {
+        for (Cell cell : cells) {
             Cell currentCell = new Cell(cell.GetRowNumber(), cell.GetColNumber());
             if(cell.GetCellState() == "X")
                 currentCell.SetState(new AliveStateOfCell());
-            currentCell._neighbourCells = cell._neighbourCells;
+            currentCell.neighbourCells = cell.neighbourCells;
             currentCell.ChangeStateAfterTick();
             newCells.add(currentCell);
         }

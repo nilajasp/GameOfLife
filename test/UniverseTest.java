@@ -19,8 +19,8 @@ public class UniverseTest {
         universe.Create(input, numberOfRows, numberOfColumns);
 
         //Then
-        Assert.assertNotNull(universe.Cells);
-        Assert.assertEquals(16, universe.Cells.size());
+        Assert.assertNotNull(universe.cells);
+        Assert.assertEquals(16, universe.cells.size());
     }
 
     @Test
@@ -36,9 +36,9 @@ public class UniverseTest {
         universe.InstantiateNeighbourCells();
 
         //Then
-        for (Cell cell : universe.Cells) {
-            Assert.assertNotNull(cell._neighbourCells);
-            Assert.assertNotEquals(0,cell._neighbourCells.size());
+        for (Cell cell : universe.cells) {
+            Assert.assertNotNull(cell.neighbourCells);
+            Assert.assertNotEquals(0,cell.neighbourCells.size());
         }
     }
 
@@ -56,7 +56,7 @@ public class UniverseTest {
         List<Cell> result = universe.Play();
 
         //Then
-        Assert.assertNotEquals(result,universe.Cells);
-        Assert.assertEquals(result.size(),universe.Cells.size());
+        Assert.assertNotEquals(result,universe.cells);
+        Assert.assertEquals(result.size(), universe.cells.size());
     }
 }
